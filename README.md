@@ -18,7 +18,8 @@ The static class that contains the helper methods
 
 ## AssertExException 
 
-An exception class that is used by AssertEx when an assertion fails.
+An exception class that is used by AssertEx when an assertion fails. Nothing
+fancy here.
 
 # Credits
 
