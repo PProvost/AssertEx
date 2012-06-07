@@ -1,6 +1,6 @@
 # AssertEx 
 
-AssertEx is a simple class of helper methods for unit testing.
+AssertEx is a simple library of helper methods for unit testing.
 Originally created for use with MS-Test, it is framework neutral so should be
 usable with any .NET unit testing framework.
 
