@@ -1,6 +1,9 @@
 using System;
+using AssertExLib;
+using AssertExLib.Internal;
+using AssertExLib.Exceptions;
 
-namespace PeterProvost.AssertExtensions
+namespace AssertExLib
 {
 	public delegate void ThrowsDelegate();
 	public delegate object ThrowsDelegateWithReturn();
@@ -11,8 +14,15 @@ namespace PeterProvost.AssertExtensions
 		{
 			var ex = Recorder.Exception(testCode);
 			if (ex != null)
-				throw new ThrowsException("DoesNotThrow failed.", ex);
+				throw new AssertExException("DoesNotThrow failed.", ex);
 		}
+
+        public static void DoesNotThrow(ThrowsDelegateWithReturn testCode)
+        {
+            var ex = Recorder.Exception(testCode);
+            if (ex != null)
+                throw new AssertExException("DoesNotThrow failed.", ex);
+        }
 
 		public static T Throws<T>(ThrowsDelegate testCode) where T : Exception
 		{
@@ -29,10 +39,10 @@ namespace PeterProvost.AssertExtensions
 			var exception = Recorder.Exception(testCode);
 
 			if (exception == null)
-				throw new ThrowsException("AssertExtensions.Throws failed. No exception occurred.");
+				throw new AssertExException("AssertExtensions.Throws failed. No exception occurred.");
 
 			if (!exceptionType.Equals(exception.GetType()))
-				throw new ThrowsException(String.Format("AssertExtensions.Throws failed. Incorrect exception {0} occurred.", exception.GetType().Name), exception);
+				throw new AssertExException(String.Format("AssertExtensions.Throws failed. Incorrect exception {0} occurred.", exception.GetType().Name), exception);
 
 			return exception;
 		}
@@ -42,10 +52,10 @@ namespace PeterProvost.AssertExtensions
 			var exception = Recorder.Exception(testCode);
 
 			if (exception == null)
-				throw new ThrowsException("AssertExtensions.Throws failed. No exception occurred.");
+				throw new AssertExException("AssertExtensions.Throws failed. No exception occurred.");
 
 			if (!exceptionType.Equals(exception.GetType()))
-				throw new ThrowsException(String.Format("AssertExtensions.Throws failed. Incorrect exception {0} occurred.", exception.GetType().Name), exception);
+				throw new AssertExException(String.Format("AssertExtensions.Throws failed. Incorrect exception {0} occurred.", exception.GetType().Name), exception);
 
 			return exception;
 		}

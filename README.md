@@ -19,3 +19,8 @@ The static class that contains the helper methods
 ## AssertExException 
 
 An exception class that is used by AssertEx when an assertion fails.
+
+# Credits
+
+Many thanks to Jim Newkirk and Brad Wilson for the whole `Assert.Throws()` thing
+in Xunit.net, from which this work is obviously and blatantly derived.
