@@ -1,4 +1,5 @@
-﻿using AssertExLib;
+﻿using System.Threading.Tasks;
+using AssertExLib;
 using AssertExLib.Internal;
 using System;
 using Xunit;
@@ -39,4 +40,21 @@ public class RecorderTests
         Assert.Null(result);
     }
 
+    [Fact]
+    public void RecorderCollectsExceptionThrownByTaskThrowsDelegate()
+    {
+        var task = Task.Factory.StartNew(() => { throw new FooException(); });
+        TaskThrowsDelegate codeDelegate = () => task;
+        var result = Recorder.Exception(codeDelegate);
+        Assert.IsAssignableFrom<AggregateException>(result);
+    }
+
+    [Fact]
+    public void RecorderReturnsNullWhenTaskDoesNotThrow()
+    {
+        var task = Task.FromResult(1);
+        TaskThrowsDelegate codeDelegate = () => task;
+        var result = Recorder.Exception(codeDelegate);
+        Assert.Null(result);
+    }
 }
