@@ -10,7 +10,7 @@ usable with any .NET unit testing framework.
 
 The static class that contains the helper methods
 
-### Exception Helpers
+### Standard Exception Helpers
 
 * `Assert.DoesNotThrow(delegate testCode)`
 * `Assert.Throws(Type type, delegate testCode)`
