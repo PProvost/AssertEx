@@ -10,11 +10,18 @@ usable with any .NET unit testing framework.
 
 The static class that contains the helper methods
 
-### Methods
+### Exception Helpers
 
 * `Assert.DoesNotThrow(delegate testCode)`
 * `Assert.Throws(Type type, delegate testCode)`
 * `Assert.Throws<T>(delegate testCode)`
+
+### Task-Async Exception Helpers
+
+* `Assert.TaskDoesNotThrow(delegate testCode)`
+* `Assert.TaskDoesNotThrow<T>(delegate testCode)`
+* `Assert.TaskThrows(Type type, delegate testCode)`
+* `Assert.TaskThrows<T>(delegate testCode)`
 
 ## AssertExException 
 
@@ -24,4 +31,5 @@ fancy here.
 # Credits
 
 Many thanks to Jim Newkirk and Brad Wilson for the whole `Assert.Throws()` thing
-in Xunit.net, from which this work is obviously and blatantly derived.
+in Xunit.net, from which this work is obviously and blatantly derived. And to shiftkey
+for the Task-Async versions.
