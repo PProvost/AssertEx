@@ -12,16 +12,16 @@ The static class that contains the helper methods
 
 ### Standard Exception Helpers
 
-* `Assert.DoesNotThrow(delegate testCode)`
-* `Assert.Throws(Type type, delegate testCode)`
-* `Assert.Throws<T>(delegate testCode)`
+* `AssertEx.DoesNotThrow(delegate testCode)`
+* `AssertEx.Throws(Type type, delegate testCode)`
+* `AssertEx.Throws<T>(delegate testCode)`
 
 ### Task-Async Exception Helpers
 
-* `Assert.TaskDoesNotThrow(delegate testCode)`
-* `Assert.TaskDoesNotThrow<T>(delegate testCode)`
-* `Assert.TaskThrows(Type type, delegate testCode)`
-* `Assert.TaskThrows<T>(delegate testCode)`
+* `AssertEx.TaskDoesNotThrow(delegate testCode)`
+* `AssertEx.TaskDoesNotThrow<T>(delegate testCode)`
+* `AssertEx.TaskThrows(Type type, delegate testCode)`
+* `AssertEx.TaskThrows<T>(delegate testCode)`
 
 ## AssertExException 
 
