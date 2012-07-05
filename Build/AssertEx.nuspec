@@ -7,8 +7,8 @@
     <authors>Peter Provost, Brendan Forster</authors>
     <owners>Peter Provost, Brendan Forster</owners>
     <projectUrl>http://github.com/pprovost/AssertEx/</projectUrl>
-    <licenseUrl>http://www.ohloh.net/licenses/mspl</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <requireLicenseAcceptance>no</requireLicenseAcceptance>
     <description>A set of simple assert extensions to give you more choices and easier to read tests</description>
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright 2012</copyright>
