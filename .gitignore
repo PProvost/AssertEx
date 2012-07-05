@@ -97,3 +97,7 @@ UpgradeLog*.XML
 
 #ignore NuGet packages for now
 packages
+
+# ignore temp folder for build
+temp
+artifacts
