@@ -108,7 +108,7 @@ task compile -depends clean,version  {
 }
 
 task test -depends compile  {
-   Log-Message "TODO: running tests"
+   exec { ..\Tools\xunit\xunit.console.clr4.x86.exe "$OutputDir\UnitTests.dll" }
 }
 
 task package -depends test {
