@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertExLib", "Source\AssertExLib.csproj", "{8CB2D8F2-4C6A-4C13-87DA-D3C85A4A12D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E25BF03-5503-4D73-88BB-91848E5955C1}"
@@ -15,12 +15,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{044422
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{52049896-1091-422D-A457-66229308A4BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52049896-1091-422D-A457-66229308A4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52049896-1091-422D-A457-66229308A4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52049896-1091-422D-A457-66229308A4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52049896-1091-422D-A457-66229308A4BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CB2D8F2-4C6A-4C13-87DA-D3C85A4A12D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CB2D8F2-4C6A-4C13-87DA-D3C85A4A12D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CB2D8F2-4C6A-4C13-87DA-D3C85A4A12D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
