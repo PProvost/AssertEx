@@ -3,11 +3,6 @@ using AssertExLib;
 using AssertExLib.Internal;
 using System;
 using Xunit;
-#if NET4
-using TaskEx = System.Threading.Tasks.TaskEx;
-#else
-using TaskEx = System.Threading.Tasks.Task;
-#endif
 
 public class RecorderTests
 {
@@ -57,7 +52,7 @@ public class RecorderTests
     [Fact]
     public void RecorderReturnsNullWhenTaskDoesNotThrow()
     {
-        var task = TaskEx.FromResult(1);
+        var task = Task.FromResult(1);
         TaskThrowsDelegate codeDelegate = () => task;
         var result = Recorder.Exception(codeDelegate);
         Assert.Null(result);

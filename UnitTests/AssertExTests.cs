@@ -3,11 +3,6 @@ using AssertExLib;
 using AssertExLib.Exceptions;
 using System;
 using Xunit;
-#if NET4
-using TaskEx = System.Threading.Tasks.TaskEx;
-#else
-using TaskEx = System.Threading.Tasks.Task;
-#endif
 
 public class AssertExTests
 {
@@ -117,7 +112,7 @@ public class AssertExTests
         [Fact]
         public void WhenTaskReturningResult_WillItselfThrow()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
+            TaskThrowsDelegate codeDelegate = () => Task.FromResult(1);
             Assert.Throws<AssertExException>(() => AssertEx.TaskThrows<BarException>(codeDelegate));
         }
 
@@ -134,14 +129,14 @@ public class AssertExTests
         [Fact]
         public void WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
+            TaskThrowsDelegate codeDelegate = () => Task.FromResult(1);
             AssertEx.TaskDoesNotThrow(codeDelegate);
         }
 
         [Fact]
         public void ForGenericParameter_WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
+            TaskThrowsDelegate codeDelegate = () => Task.FromResult(1);
             AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
         }
 
@@ -169,7 +164,7 @@ public class AssertExTests
         [Fact]
         public void UsingGenericType_WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
+            TaskThrowsDelegate codeDelegate = () => Task.FromResult(1);
             AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
         }
     }
