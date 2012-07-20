@@ -8,7 +8,6 @@ namespace AssertExLib
 {
     public delegate void ThrowsDelegate();
     public delegate object ThrowsDelegateWithReturn();
-    public delegate Task TaskThrowsDelegate();
 
     public static class AssertEx
     {
@@ -62,9 +61,9 @@ namespace AssertExLib
             return exception;
         }
 
-        public static T TaskThrows<T>(TaskThrowsDelegate testCode) where T : Exception
+        public static T TaskThrows<T>(Task task) where T : Exception
         {
-            var exception = Recorder.Exception(testCode);
+            var exception = Recorder.Exception(task);
 
             if (exception == null)
                 throw new AssertExException("AssertExtensions.Throws failed. No exception occurred.");
@@ -77,9 +76,9 @@ namespace AssertExLib
             return exceptionsMatching.First();
         }
 
-        public static void TaskDoesNotThrow(TaskThrowsDelegate testCode)
+        public static void TaskDoesNotThrow(Task task)
         {
-            var exception = Recorder.Exception(testCode);
+            var exception = Recorder.Exception(task);
 
             if (exception == null)
                 return;
@@ -88,9 +87,9 @@ namespace AssertExLib
             throw new AssertExException(String.Format("AssertExtensions.TaskDoesNotThrow failed. Incorrect exception {0} occurred.", exception.GetType().Name), exception);
         }
 
-        public static void TaskDoesNotThrow<T>(TaskThrowsDelegate testCode) where T : Exception
+        public static void TaskDoesNotThrow<T>(Task task) where T : Exception
         {
-            var exception = Recorder.Exception(testCode);
+            var exception = Recorder.Exception(task);
 
             if (exception == null)
                 return;

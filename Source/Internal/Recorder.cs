@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace AssertExLib.Internal
 {
@@ -44,13 +45,13 @@ namespace AssertExLib.Internal
         /// <summary>
         /// Records any exception which is thrown by the given code that returns a task.
         /// </summary>
-        /// <param name="code">The code which may thrown an exception.</param>
+        /// <param name="task">The task which may thrown an exception</param>
         /// <returns>Returns the exception that was thrown by the code; null, otherwise.</returns>
-        public static AggregateException Exception(TaskThrowsDelegate code)
+        public static AggregateException Exception(Task task)
         {
             try
             {
-                code().Wait();
+                task.Wait();
                 return null;
             }
             catch (AggregateException ex)

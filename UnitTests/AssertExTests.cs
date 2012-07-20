@@ -96,36 +96,36 @@ public class AssertExTests
         [Fact]
         public void WhenTaskThrows_DetectsInnerException()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew(() => { throw new FooException(); });
-            AssertEx.TaskThrows<FooException>(codeDelegate);
+            var task = Task.Factory.StartNew(() => { throw new FooException(); });
+            AssertEx.TaskThrows<FooException>(task);
         }
 
         [Fact]
         public void WhenTaskReturningResultThrows_DetectsInnerException()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new FooException(); });
-            AssertEx.TaskThrows<FooException>(codeDelegate);
+            var task = Task.Factory.StartNew<int>(() => { throw new FooException(); });
+            AssertEx.TaskThrows<FooException>(task);
         }
 
         [Fact]
         public void WhenTaskReturningResultThrowsDifferent_WillItselfThrow()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new FooException(); });
-            Assert.Throws<AssertExException>(() => AssertEx.TaskThrows<BarException>(codeDelegate));
+            var task = Task.Factory.StartNew<int>(() => { throw new FooException(); });
+            Assert.Throws<AssertExException>(() => AssertEx.TaskThrows<BarException>(task));
         }
 
         [Fact]
         public void WhenTaskReturningResult_WillItselfThrow()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
-            Assert.Throws<AssertExException>(() => AssertEx.TaskThrows<BarException>(codeDelegate));
+            var task = TaskEx.FromResult(1);
+            Assert.Throws<AssertExException>(() => AssertEx.TaskThrows<BarException>(task));
         }
 
         [Fact]
         public void WhenTaskThrowsDifferentException_IsIgnored()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new BarException(); });
-            AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
+            var task = Task.Factory.StartNew<int>(() => { throw new BarException(); });
+            AssertEx.TaskDoesNotThrow<FooException>(task);
         }
     }
 
@@ -134,43 +134,43 @@ public class AssertExTests
         [Fact]
         public void WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
-            AssertEx.TaskDoesNotThrow(codeDelegate);
+            var task = TaskEx.FromResult(1);
+            AssertEx.TaskDoesNotThrow(task);
         }
 
         [Fact]
         public void ForGenericParameter_WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
-            AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
+            var task = TaskEx.FromResult(1);
+            AssertEx.TaskDoesNotThrow<FooException>(task);
         }
 
         [Fact]
         public void ForAnyException_WillItselfThrow()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new BarException(); });
-            Assert.Throws<AssertExException>(() => AssertEx.TaskDoesNotThrow(codeDelegate));
+            var task = Task.Factory.StartNew<int>(() => { throw new BarException(); });
+            Assert.Throws<AssertExException>(() => AssertEx.TaskDoesNotThrow(task));
         }
 
         [Fact]
         public void ForMatchingException_WillItselfThrow()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new FooException(); });
-            Assert.Throws<AssertExException>(() => AssertEx.TaskDoesNotThrow<FooException>(codeDelegate));
+            var task = Task.Factory.StartNew<int>(() => { throw new FooException(); });
+            Assert.Throws<AssertExException>(() => AssertEx.TaskDoesNotThrow<FooException>(task));
         }
 
         [Fact]
         public void WhereExceptionIsDifferent_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => Task.Factory.StartNew<int>(() => { throw new BarException(); });
-            AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
+            var task = Task.Factory.StartNew<int>(() => { throw new BarException(); });
+            AssertEx.TaskDoesNotThrow<FooException>(task);
         }
 
         [Fact]
         public void UsingGenericType_WhenTaskReturnsResult_IsSuccessful()
         {
-            TaskThrowsDelegate codeDelegate = () => TaskEx.FromResult(1);
-            AssertEx.TaskDoesNotThrow<FooException>(codeDelegate);
+            var task = TaskEx.FromResult(1);
+            AssertEx.TaskDoesNotThrow<FooException>(task);
         }
     }
 }

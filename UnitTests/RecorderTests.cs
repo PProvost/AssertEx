@@ -40,7 +40,7 @@ public class RecorderTests
     [Fact]
     public void RecorderReturnsNullWhenThrowsDelegateWithReturnDoesNotThrow()
     {
-        ThrowsDelegateWithReturn codeDelegate = () => { return null; };
+        ThrowsDelegateWithReturn codeDelegate = () => null;
         var result = Recorder.Exception(codeDelegate);
         Assert.Null(result);
     }
@@ -49,8 +49,7 @@ public class RecorderTests
     public void RecorderCollectsExceptionThrownByTaskThrowsDelegate()
     {
         var task = Task.Factory.StartNew(() => { throw new FooException(); });
-        TaskThrowsDelegate codeDelegate = () => task;
-        var result = Recorder.Exception(codeDelegate);
+        var result = Recorder.Exception(task);
         Assert.IsAssignableFrom<AggregateException>(result);
     }
 
@@ -58,8 +57,7 @@ public class RecorderTests
     public void RecorderReturnsNullWhenTaskDoesNotThrow()
     {
         var task = TaskEx.FromResult(1);
-        TaskThrowsDelegate codeDelegate = () => task;
-        var result = Recorder.Exception(codeDelegate);
+        var result = Recorder.Exception(task);
         Assert.Null(result);
     }
 }
