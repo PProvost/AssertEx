@@ -6,7 +6,7 @@ properties {
     $OutputDir = "$BaseDir\temp\"
     $PackageDir = "$BaseDir\temp\package"
     $ArtifactsDir = "$BaseDir\artifacts"
-    $BaseVersion = "0.0.1"
+    $BaseVersion = "1.0.0"
     $Version = "$BaseVersion" 
     $PatchNumber = (git rev-list --all | wc -l).trim() # TODO: better implementation
     $AssemblyVersion = "$BaseVersion.$PatchNumber"
@@ -53,7 +53,7 @@ function Output-Library {
     param([Parameter(Mandatory=$true)][string]$library)
 
     # add portable assembly to multiple paths
-    $folders = "net45", "sl50", "winrt45" # note: .NET 4 isn't supported here yet - trying to recall why...
+    $folders = "net40", "net45", "sl50", "winrt45"
     ForEach ($folder in $folders) {
 
         $newFolder = "$PackageDir\lib\$folder"
