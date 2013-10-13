@@ -4,7 +4,7 @@ using AssertExLib.Internal;
 using System;
 using Xunit;
 #if NET4
-using TaskEx = System.Threading.Tasks.TaskEx;
+using TaskEx = UnitTests.NET4.TaskEx;
 #else
 using TaskEx = System.Threading.Tasks.Task;
 #endif
